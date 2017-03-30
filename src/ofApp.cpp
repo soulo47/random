@@ -10,7 +10,7 @@ jewel.load("diamond.png");// image to use (must be stored in "random/bin/data" f
 //Y = {630, 400, 900,40, 200, 0, 90, 30}; //set of y-coordinates for jewel
 int valueX = 0;
 int valueY = 0;
-std::random_device rd;
+/*std::random_device rd;
 std::mt19937 eng(rd());
 
 
@@ -21,6 +21,24 @@ for(int i = 0; i < 20; i++)
 {
 	X.push_back(uniX(eng));
 	Y.push_back(uniY(eng));
+}*/
+std::random_device rd;
+std::mt19937 eng(rd());
+
+float meanX = 1000;
+float meanY = 800;
+
+float standard = 15;
+
+
+
+std::normal_distribution<float> normX(meanX, standard);
+std::normal_distribution<float> normY(meanY, standard);
+
+for(int i = 0; i < 20; i++)
+{
+	X.push_back(normX(eng));
+	Y.push_back(normY(eng));
 }
 }
 
